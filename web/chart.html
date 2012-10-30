@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['time', 'ideal %moisture', 'recorded %moisture'],
+          ['Sun',  10,       10],
+          ['Mon',  100,      90],
+          ['Tue',  80,      90],
+          ['Wed',60,      70],
+          ['Thu',  20,     60],
+          ['Fri',  10,       50],
+          ['Sat', 10,      40]
+        ]);
+
+        var options = {
+          title: 'Tomatoes'
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

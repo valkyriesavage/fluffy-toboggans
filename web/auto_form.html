@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" dir="ltr">
+  <head>
+    <title>Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <style type="text/css">
+      @import "auto_form.css";
+    </style>
+  </head>
+  <body>
+
+  <div id="wd-form">
+    <form action="form-markup-error.html" method="post">
+      <fieldset>
+        <legend>Set up a recurring watering plan</legend>
+        <p class="intro">
+          When the moisture level
+        </p>
+        <dl>
+          <dt>
+            <label for="auto_percent_moisture_reaches">reaches below</label>
+          </dt>
+          <dd>
+            <select name="auto_percent_moisture_reaches" id="auto_percent_moisture_reaches">
+              <option value="-1">percent</option>
+              <option value="1">10%</option>
+              <option value="2">20%</option>
+              <option value="3">30%</option>
+              <option value="4">40%</option>
+              <option value="5">50%</option>
+              <option value="6">60%</option>
+              <option value="7">70%</option>
+              <option value="8">80%</option>
+              <option value="9">90%</option>
+              <option value="10">100%</option>
+            </select>
+          </dd>
+          <dt>
+            <label for="auto_percent_moisture_until">water until it gets to</label>
+          </dt>
+          <dd>
+            <select name="auto_percent_moisture_until" id="auto_percent_moisture_until">
+              <option value="-1">percent</option>
+              <option value="1">10%</option>
+              <option value="2">20%</option>
+              <option value="3">30%</option>
+              <option value="4">40%</option>
+              <option value="5">50%</option>
+              <option value="6">60%</option>
+              <option value="7">70%</option>
+              <option value="8">80%</option>
+              <option value="9">90%</option>
+              <option value="10">100%</option>
+            </select>
+          </dd>
+        </dl>
+        <p class="submit">
+          <input type="submit" value="Start auto-watering"  tabindex="8">
+        </p>
+      </fieldset>
+    </form>
+  </div>
+  
+  <script type="text/javascript" src="auto_form.js"></script>
+  
+  </body>
+</html>
