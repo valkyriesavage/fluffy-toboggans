@@ -1,0 +1,50 @@
+/**
+* http://www.w3.org/TR/REC-html40/interact/forms.html
+*/
+
+.wd-form {
+  border: 1px solid #ccc;
+  border-right-width: 2px;
+}
+.wd-form form {
+  margin: 0;
+  padding: 0;
+}
+.wd-form fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.wd-form legend {
+  padding: .4em;
+  font-size: 125%;
+  font-weight: bold;
+}
+.wd-form input, 
+.wd-form select {
+  color: #555;
+}
+.wd-form p.submit {
+  margin: 0;
+  border: solid #e9e9e9;
+  border-width: 1px 0;
+  border-bottom: 1px solid #ccc;
+  padding: .5em .5em .5em .5em;
+  background: #f9f9f9;
+}
+.wd-form p.submit input {
+  font-size: 110%;
+  font-weight: bold;
+}
+
+/* error field container */
+.wd-form dd.error-c { /* note that you need the specificity */
+  border: 1px solid red; 
+}
+
+/* error message next to the field */
+.wd-form .error-msg {
+  color: red;
+  margin: 0 0 0 1em;
+  font-size: .9em;
+}

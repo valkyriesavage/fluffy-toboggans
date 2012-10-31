@@ -1,0 +1,29 @@
+body {
+  color: #555;
+  font-family: Trebuchet, "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+  font-size: 85%;
+  margin: 0;
+  padding: 0;
+}
+#hd {
+  padding: 3em .5em 0;
+  margin-left: 10em;
+}
+#bd {
+  width: 850px;
+  padding: .5em 0 0 1em;
+}
+#bd .section h1 {
+  margin: 0;
+  line-height: 2em;
+}
+#bd .section p {
+  margin: 0;
+  padding-bottom: 1em;
+  line-height: 1.5em;
+}
+
+.wd-form {
+  margin-bottom: 2em;
+  margin-left: 10em;
+}
