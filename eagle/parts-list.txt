@@ -1,1 +1,15 @@
-10K Res 0803 - http://www.jameco.com/webapp/wcs/stores/servlet/Product_10001_10001_1877779_-1
+R1-4 - 10K Res 0803 - http://www.jameco.com/webapp/wcs/stores/servlet/Product_10001_10001_1877779_-1
+R5 - 56 Ohm Res 0803
+C1-3 - 1uF 0603
+D1 - diode - 20V 1A Schottky Diode Digikey: 641-1014-6-ND
+IC1 - MEGA88/168
+JP1 - Power Jack - Spark Fun Electronics SKU : PRT-00119 - https://www.sparkfun.com/products/119
+LED1 - HSMA-C170 
+LIPOREG - MCP73831 - http://octopart.com/mcp73831t-2ati%2Fot-microchip-422780
+Buttons - 13mm pushbutton http://www.digikey.com/scripts/DKSearch/dksus.dll?Detail&itemSeq=122092714&uq=634880582311804429
+T1 - Darlington - http://www.digikey.com/product-detail/en/MMBTA13LT1G/MMBTA13LT1GOSTR-ND/919625?WT.z_cid=ref_octopart_dkc_buynow
+T2 - Transistor - http://www.digikey.com/product-detail/en/MMBT2222A/MMBT2222AFSTR-ND/458866?WT.z_cid=ref_octopart_dkc_buynow
+BATTGAUGE - MAX17040  - http://www.digikey.com/product-detail/en/MAX17040G%2BT/MAX17040G%2BTDKR-ND/2699198
+BATTCON - JST Throughhole connector - http://www.digikey.com/product-detail/en/B2B-PH-K-S%28LF%29%28SN%29/455-1704-ND/926611
+XBEE - headers for Xbee - http://www.samtec.com/ProductInformation/TechnicalSpecifications/Overview.aspx?series=MMS
+TEMPSIGNAL - http://www.digikey.com/scripts/DKSearch/dksus.dll?Detail&itemSeq=122117506&uq=634880582311804429
