@@ -1,10 +1,5 @@
 This is a fork from tinajalabs' gateway_raspi
 
-This project is intended to experiment with using the Raspberry Pi as an XBee
-gateway, machine learning platform, and web server.  We are experimenting
-with different scheduling algorithms to keep client throughput high and also
-keep machine learning data fresh.
-
 The system components are as follows:
 
 devices co-located with plants
