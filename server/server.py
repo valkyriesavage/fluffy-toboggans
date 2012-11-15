@@ -62,7 +62,7 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
   @classmethod
   def data_file_name(cls, plant_num):
-    return "data/" + plant_num + ".txt"
+    return "sensor-data/" + plant_num + ".txt"
 
   @classmethod
   def send_all_data(cls, plant_num):
