@@ -13,7 +13,7 @@ var updater = {
 	socket: null,
 
 	start: function() {
-		var url = "ws://" + location.host + "/plant/"; //TODO
+		var url = "ws://" + location.host + "/plant/plant_1";
 		if ("WebSocket" in window) {
 			updater.socket = new WebSocket(url);
 		} else {
@@ -27,6 +27,7 @@ var updater = {
 	updateIncoming: function(incoming) {
 		// TODO what is the format of data coming in?
 		// TODO update the incoming data variable
+		incoming_data = incoming;
 	}
 };
 
@@ -45,7 +46,7 @@ google.load("visualization", "1", {packages:["corechart"]});
         ]);
 
 		// TODO go over the incoming data variable
-		// data.setCell(fill me in);
+		 data.setCell(0,1,incoming_data);
 
         var options = {
           title: 'Tomatoes'
