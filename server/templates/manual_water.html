@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en" dir="ltr">
+  <head>
+    <title>H2O IQ Manual Watering</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <!-- Google Charts -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="tomato_chart.js"></script>
+    
+    <style type="text/css">
+      @import "manual_form.css";
+      @import "chart.css";
+      @import "H2O_IQ.css";
+    </style>
+  </head>
+  <body>
+  <div id="hd">
+    <h1 class="g-section">H20 IQ - Manual Watering</h1>
+  </div>
+  <div id="bd">
+    <div id="tomato_chart_div" class="chart"></div>
+    <div id="wd-form" class="wd-form">
+      <form action="form-markup-error.html" method="post">
+        <fieldset>
+          <legend>Set a one-time watering</legend>
+          <p class="intro">
+            I'd like to water these today until the moisture level
+         </p>
+          <dl>
+            <dt>
+              <label for="manual_percent_moisture">reaches</label>
+            </dt>
+            <dd>
+              <select name="manual_percent_moisture" id="manual_percent_moisture">
+                <option value="-1">percent</option>
+                <option value="1">10%</option>
+                <option value="2">20%</option>
+                <option value="3">30%</option>
+                <option value="4">40%</option>
+                <option value="5">50%</option>
+                <option value="6">60%</option>
+                <option value="7">70%</option>
+                <option value="8">80%</option>
+                <option value="9">90%</option>
+                <option value="10">100%</option>
+              </select>
+            </dd>
+          </dl>
+          <p class="submit">
+            <input type="submit" value="Water now!"  tabindex="8">
+          </p>
+       </fieldset>
+      </form>
+   </div>
+   <div id="wd-form-toggle" class="wd-form">
+    <form action="form-markup-error.html" method="post">
+      <fieldset>
+        <legend>Automatic watering is off.</legend>
+        <p class="submit">
+          <input type="submit" value="Turn it on!"  tabindex="8">
+        </p>
+      </fieldset>
+    </form>
+  </div>
+  </div>
+  <script type="text/javascript" src="manual_form.js"></script>
+  
+  </body>
+</html>
+
