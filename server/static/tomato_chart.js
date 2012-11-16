@@ -5,7 +5,6 @@ $(document).ready(function() {
 	// TODO
 
 	// graph the new moisture readings
-	document.getElementById('tomato_chart_div').select();
 	updater.start();
 });
 
@@ -20,7 +19,7 @@ var updater = {
 			updater.socket = new MozWebSocket(url);
 		}
 		updater.socket.onmessage = function(event) {
-			updater.updateIncoming(JASON.parse(event.data));
+			updater.updateIncoming(JSON.parse(event.data));
 		}
 	},
 
@@ -28,6 +27,7 @@ var updater = {
 		// TODO what is the format of data coming in?
 		// TODO update the incoming data variable
 		incoming_data = incoming;
+                drawChart();
 	}
 };
 
@@ -45,8 +45,8 @@ google.load("visualization", "1", {packages:["corechart"]});
           ['Sat', 10,      40]
         ]);
 
-		// TODO go over the incoming data variable
-		 data.setCell(0,1,incoming_data);
+	// TODO go over the incoming data variable
+	data.setCell(1,1,incoming_data);
 
         var options = {
           title: 'Tomatoes'
