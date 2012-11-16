@@ -14,8 +14,6 @@ import tornado.websocket
 
 from xbee import xbee
 
-import sensorhistory
-
 define("port", default=8888, help="run on the given port", type=int)
 
 class Application(tornado.web.Application):
@@ -66,23 +64,44 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
   @classmethod
   def send_all_data(cls, plant_num):
-    try:
+    '''try:
       data_file = open(cls.data_file_name(plant_num), 'r')
-      data = []
+      data = {}
       for line in data_file:
-        data.append(line.split())
+        timestamp, reading = line.split()
+        data[timestamp] = reading
+        if(self.latest < timestamp):
+          self.latest = timestamp
     except IOError:
-      data = ""
-
+      data = "hi shiry"
+    '''
     try:
       cls.clients[plant_num].write_message('666');
+    except:
+      logging.error("Error sending message", exc_info=True)
+
+  @classmethod
+  def send_latest_data(cls, plant_num, latest):
+    try:
+      data_file = open(cls.data_file_name(plant_num), 'r')
+      data = {}
+      for line in data_file:
+        timestamp, reading = line.split()
+        if(self.latest < timestamp):
+          data[timestamp] = reading
+          self.latest = timestamp
+    except IOError:
+      data = "hi shiry"
+
+    try:
+      cls.clients[plant_num].write_message(data);
     except:
       logging.error("Error sending message", exc_info=True)
 
   def on_message(self, instruction):
     logging.info("got message %r", instruction)
     parsed = tornado.escape.json_decode(instruction)
-    WaterDataSocketHandler.update_cache(instruction)
+    WaterDataSocketHandler.update_cache(parsed)
 
 def main():
   # look into
