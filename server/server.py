@@ -16,10 +16,14 @@ from xbee import xbee
 
 define("port", default=8888, help="run on the given port", type=int)
 
+def log_data_file(plant_num):
+  return "sensor-data/" + plant_num + ".log"
+
 class Application(tornado.web.Application):
   def __init__(self):
     handlers = [
         (r"/plant/(.*)", WaterDataSocketHandler),
+        (r"/sensorupdated/(.*)/(.*)", SensorUpdatedHandler),
         (r"/*", MainHandler),
         ]
     settings = dict(
@@ -34,7 +38,11 @@ class Application(tornado.web.Application):
 
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
-    self.render("index.html", messages=WaterDataSocketHandler.instructions)
+    self.render("index.html", messages=[])
+
+class SensorUpdatedHandler(tornado.web.RequestHandler):
+  def get(self, plant_num, value):
+    WaterDataSocketHandler.send_latest_data(plant_num, value)
 
 class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
@@ -46,6 +54,7 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     return True
 
   def open(self, plant_num):
+    plant_num = plant_num.strip('?plant=_')
     WaterDataSocketHandler.clients[plant_num] = self
     self.plant_num = plant_num
     logging.info("got client for plant " + plant_num)
@@ -59,42 +68,32 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     cls.instructions.append(instruction)
 
   @classmethod
-  def data_file_name(cls, plant_num):
-    return "sensor-data/" + plant_num + ".txt"
-
-  @classmethod
   def send_all_data(cls, plant_num):
-    '''try:
-      data_file = open(cls.data_file_name(plant_num), 'r')
+    data = 'hi shiry'
+    try:
+      data_file = open(log_data_file(plant_num), 'r')
       data = {}
       for line in data_file:
-        timestamp, reading = line.split()
+        timestamp, reading = line.strip().split()
         data[timestamp] = reading
-        if(self.latest < timestamp):
-          self.latest = timestamp
     except IOError:
-      data = "hi shiry"
-    '''
+      pass
+
+    logging.info(data)
+
     try:
-      cls.clients[plant_num].write_message('666');
+      cls.clients[plant_num].write_message(data);
     except:
       logging.error("Error sending message", exc_info=True)
 
   @classmethod
-  def send_latest_data(cls, plant_num, latest):
-    try:
-      data_file = open(cls.data_file_name(plant_num), 'r')
-      data = {}
-      for line in data_file:
-        timestamp, reading = line.split()
-        if(self.latest < timestamp):
-          data[timestamp] = reading
-          self.latest = timestamp
-    except IOError:
-      data = "hi shiry"
+  def send_latest_data(cls, plant_num, sensor_reading):
+    if not plant_num in cls.clients:
+      return
 
+    client = cls.clients[plant_num]
     try:
-      cls.clients[plant_num].write_message(data);
+      client.write_message(sensor_reading);
     except:
       logging.error("Error sending message", exc_info=True)
 
