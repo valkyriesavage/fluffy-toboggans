@@ -1,4 +1,5 @@
 var incoming_data;
+var ideal_tomato = [0.2, 0.2, 1, 0.95, 0.9, 0.75, 0.6, 0.4, 0.2];
 
 $(document).ready(function() {
 	// post the new instructions to the watering system
@@ -36,24 +37,11 @@ var updater = {
 google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        /*
-        var data = google.visualization.arrayToDataTable([
-          ['time', 'ideal %moisture', 'recorded %moisture'],
-          ['Sun',  10,       10],
-          ['Mon',  100,      90],
-          ['Tue',  80,      90],
-          ['Wed',60,      70],
-          ['Thu',  20,     60],
-          ['Fri',  10,       50],
-          ['Sat', 10,      40]
-        ]);
-*/
-        if (typeof(incoming_data) == "undefined") return;
+        if (typeof(incoming_data) == 'undefined') return;
 
         var data = new google.visualization.DataTable();
         // add columns
-        //data.addColumn('date', 'date'); TODO switch to date and format
-        data.addColumn('number', 'date');
+        data.addColumn('date', 'date');
         data.addColumn('number', 'ideal %moisture');
         data.addColumn('number', 'recorded %moisture');
         // add empty rows
@@ -62,14 +50,25 @@ google.load("visualization", "1", {packages:["corechart"]});
 	// go over the incoming data variable
         for (var row = 0; row < incoming_data.length; ++row) {
           for (var date in incoming_data[row]) {
-	    data.setCell(row, 0, parseFloat(date));
-            data.setCell(row, 1, 1);
+            // multiply by 1000 so that the date is in milliseconds, not seconds
+            //var d = new Date(parseInt(date) * 1000);
+            //var formattedDate = d.getMonth() + '/' + d.getDay() + ' '
+            //  + d.getHours() + ':' + d.getMinutes();
+	    data.setCell(row, 0, new Date(parseInt(date) * 1000));
+            data.setCell(row, 1, ideal_tomato[row]);
             data.setCell(row, 2, parseFloat(incoming_data[row][date]));
           }
         }
 
+        //var formatter = new google.visualization.DateFormat({pattern: "EEE, MMM d, H:m"});
+        var formatter = new google.visualization.DateFormat({pattern: "m"});
+        formatter.format(data,0);
+
         var options = {
-          title: 'Tomatoes'
+          title: 'Tomatoes',
+          hAxis: {
+            format: 'm'
+          }
         };
 
         var chart = new google.visualization.LineChart(document.getElementById('tomato_chart_div'));
