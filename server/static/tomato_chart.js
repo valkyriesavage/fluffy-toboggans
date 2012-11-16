@@ -41,7 +41,7 @@ google.load("visualization", "1", {packages:["corechart"]});
 
         var data = new google.visualization.DataTable();
         // add columns
-        data.addColumn('date', 'date');
+        data.addColumn('datetime', 'date');
         data.addColumn('number', 'ideal %moisture');
         data.addColumn('number', 'recorded %moisture');
         // add empty rows
@@ -51,23 +51,19 @@ google.load("visualization", "1", {packages:["corechart"]});
         for (var row = 0; row < incoming_data.length; ++row) {
           for (var date in incoming_data[row]) {
             // multiply by 1000 so that the date is in milliseconds, not seconds
-            //var d = new Date(parseInt(date) * 1000);
-            //var formattedDate = d.getMonth() + '/' + d.getDay() + ' '
-            //  + d.getHours() + ':' + d.getMinutes();
 	    data.setCell(row, 0, new Date(parseInt(date) * 1000));
             data.setCell(row, 1, ideal_tomato[row]);
             data.setCell(row, 2, parseFloat(incoming_data[row][date]));
           }
         }
 
-        //var formatter = new google.visualization.DateFormat({pattern: "EEE, MMM d, H:m"});
-        var formatter = new google.visualization.DateFormat({pattern: "m"});
+        var formatter = new google.visualization.DateFormat({pattern: "EEE, MMM d, H:m"});
         formatter.format(data,0);
 
         var options = {
           title: 'Tomatoes',
           hAxis: {
-            format: 'm'
+            format: 'EEE, MMM d, H:mm'
           }
         };
 
