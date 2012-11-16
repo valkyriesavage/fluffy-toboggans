@@ -72,17 +72,17 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     data = 'hi shiry'
     try:
       data_file = open(log_data_file(plant_num), 'r')
-      data = {}
+      data = []
       for line in data_file:
         timestamp, reading = line.strip().split()
-        data[timestamp] = reading
+        data.append({timestamp: reading})
     except IOError:
       pass
 
     logging.info(data)
 
     try:
-      cls.clients[plant_num].write_message(data);
+      cls.clients[plant_num].write_message(tornado.escape.json_encode(data));
     except:
       logging.error("Error sending message", exc_info=True)
 
