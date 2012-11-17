@@ -7,7 +7,13 @@ $(document).ready(function() {
           newInstruction($(this));
           return false;
         });
-        
+
+        // toggle between pages TODO this isnt working
+        /*
+        $("#toggle").live("submit", function() {
+          window.location = 'auto_water.html';
+        });
+        */
 	// graph the new moisture readings
 	updater.start();
 });
