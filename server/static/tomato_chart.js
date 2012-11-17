@@ -34,7 +34,7 @@ var updater = {
 	}
 };
 
-google.load("visualization", "1", {packages:["corechart"]});
+google.load("visualization", "1", {packages:["annotatedtimeline"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         if (typeof(incoming_data) == 'undefined') return;
@@ -67,6 +67,6 @@ google.load("visualization", "1", {packages:["corechart"]});
           }
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('tomato_chart_div'));
+        var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('tomato_chart_div'));
         chart.draw(data, options);
       }
