@@ -3,11 +3,31 @@ var ideal_tomato = [0.2, 0.2, 1, 0.95, 0.9, 0.75, 0.6, 0.4, 0.2];
 
 $(document).ready(function() {
 	// post the new instructions to the watering system
-	// TODO
-
+	$("#waterform").live("submit", function() {
+          newInstruction($(this));
+          return false;
+        });
+        
 	// graph the new moisture readings
 	updater.start();
 });
+
+function newInstruction(form) {
+  var instruction = form.formToDict();
+  updater.socket.send(JSON.stringify(instruction));
+  form.find("input[type=text]").val("").select();
+}
+
+jQuery.fn.formToDict = function() {
+  var fields = this.serializeArray();
+  var json = {}
+  for (var i = 0; i < fields.length; i++) {
+    json[fields[i].name] = fields[i].value;
+  }
+  if (json.next) delete json.next;
+  return json;
+};
+
 
 var updater = {
 	socket: null,
