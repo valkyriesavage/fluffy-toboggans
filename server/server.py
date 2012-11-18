@@ -19,6 +19,9 @@ define("port", default=8888, help="run on the given port", type=int)
 def log_data_file(plant_num):
   return "sensor-data/" + plant_num + ".log"
 
+def instructions_data_file(plant_num):
+  return "instructions-data/" + plant_num + ".log"
+
 class Application(tornado.web.Application):
   def __init__(self):
     handlers = [
@@ -47,7 +50,6 @@ class SensorUpdatedHandler(tornado.web.RequestHandler):
 class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
   clients = {}
-  instructions = []
 
   def allow_draft76(self):
     # for iOS 5.0 Safari
@@ -62,10 +64,6 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
   def on_close(self):
     del WaterDataSocketHandler.clients[self.plant_num]
-
-  @classmethod
-  def update_cache(cls, instruction):
-    cls.instructions.append(instruction)
 
   @classmethod
   def send_all_data(cls, plant_num):
@@ -99,12 +97,11 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
   def on_message(self, instruction):
     logging.info("got message %r", instruction)
-    parsed = tornado.escape.json_decode(instruction)
-    WaterDataSocketHandler.update_cache(parsed)
+    instructions_file = open(instructions_data_file(self.plant_num), 'a')
+    instructions_file.write(instruction)
+    instructions_file.close()
 
 def main():
-  # look into
-  # https://github.com/tavendo/AutobahnPython/tree/master/examples/wamp/serial2ws
   tornado.options.parse_command_line()
   app = Application()
   app.listen(options.port)

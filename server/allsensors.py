@@ -1,14 +1,11 @@
 #!/usr/bin/env python
 
-# original source: http://github.com/adafruit/Tweet-a-Watt/blob/master/wattcher.py
-# tps, 03.14.2011 - fix for data output spikes
 print "Sensor Manager..."
 print "CS294-84 project based on code from Tinaja labs"
 print "-----------------------------------------------"
 
 import os, serial, syslog, time
-from xbee import xbee
-from server import log_data_file
+from server import log_data_file, instructions_data_file
 
 SERIALPORT = "/dev/ttyAMA0"    # the com/serial port the XBee is connected to
 BAUDRATE = 9600      # the baud rate we talk to the xbee
@@ -17,47 +14,28 @@ BAUDRATE = 9600      # the baud rate we talk to the xbee
 # the main function
 def mainloop(idleevent):
 
-    # grab one packet from the xbee, or timeout
-    try:
-        packet = xbee.find_packet(ser)
-        if not packet:
-            syslog.syslog("H2OIQ.mainloop exception: no serial packet found..." )
-            return
+    data = ser.read()
 
-    except Exception, e:
-        syslog.syslog("H2OIQ.mainloop exception: Serial packet: "+str(e))
-        return
+    if not data:
+      return
 
-    try:
-        xb = xbee(packet)    # parse the packet
-        if not xb:
-            syslog.syslog("H2OIQ.mainloop exception: no xb packet found...")
-            return
-    except Exception, e:
-        syslog.syslog("H2OIQ.mainloop exception: xb packet: "+str(e))
-        return
-
-    # this traps an error when there is no address_16 attribute for xb
-    # why this happens is a mystery to me
-    try:
-        if xb.address_16 == 99:
-            return
-    except Exception, e:
-        syslog.syslog("H2OIQ.mainloop exception: xb attribute: "+str(e))
-        return
+    plant_num = 1
+    sensor_data = data
 
     # respond to the XBee
-    respond(xb)
+    respond(plant_num)
 
     # log the data
-    plant_num = xb.address_16
-    sensor_data = xb.analog_samples[0]
     log_data(plant_num, sensor_data)
     alert_sever(plant_num, sensor_data)
 
 
-def respond(xb):
-  print xb.address_16
+def respond(plant_num):
+  instructions_file = open(instructions_data_file(plant_num), 'w+')
+  for line in instructions_file:
+    ser.write(line)
+  instructions_file.truncate(0)
+  instructions_file.close()
 
 ZERO_BYTES_FROM = 0
 FILE_END = 2
