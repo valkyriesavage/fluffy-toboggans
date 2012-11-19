@@ -5,3 +5,5 @@
 .*.swp
 *~
 *.log
+*.aux
+*.synctex.gz
