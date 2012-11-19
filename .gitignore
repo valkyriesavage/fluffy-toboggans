@@ -1,3 +1,9 @@
 # Eagle Files
 *.b#*
 *.s#*
+*.pyc
+.*.swp
+*~
+*.log
+*.aux
+*.synctex.gz

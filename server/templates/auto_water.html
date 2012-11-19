@@ -6,12 +6,13 @@
 
     <!-- Google Charts -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="tomato_chart.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/tomato_chart.js"></script>
     
     <style type="text/css">
-      @import "auto_form.css";
-      @import "chart.css";
-      @import "H2O_IQ.css";
+      @import "../static/auto_form.css";
+      @import "../static/chart.css";
+      @import "../static/H2O_IQ.css";
     </style>
   </head>
   <body>
@@ -21,7 +22,7 @@
   <div id="bd">
     <div id="tomato_chart_div" class="chart"></div>
     <div id="wd-form" class="wd-form">
-      <form action="form-markup-error.html" method="post">
+      <form action="form-markup-error.html" method="post" id="waterform">
       <fieldset>
         <legend>Set up a recurring watering plan</legend>
         <p class="intro">
@@ -82,7 +83,7 @@
     </form>
   </div>
   </div>
-  <script type="text/javascript" src="auto_form.js"></script>
+  <script type="text/javascript" src="../static/auto_form.js"></script>
   
   </body>
 </html>
