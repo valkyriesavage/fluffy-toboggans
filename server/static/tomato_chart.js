@@ -3,17 +3,28 @@ var ideal_tomato = [0.2, 0.2, 1, 0.95, 0.9, 0.75, 0.6, 0.4, 0.2];
 
 $(document).ready(function() {
 	// post the new instructions to the watering system
-	$("#waterform").live("submit", function() {
+	$(".waterform").live("submit", function() {
           newInstruction($(this));
           return false;
         });
 
-        // toggle between pages TODO this isnt working
-        /*
-        $("#toggle").live("submit", function() {
-          window.location = 'auto_water.html';
+        // toggle between modes
+        $("#toggleform-manual").live("submit", function() {
+          document.getElementById('wd-form-manual').style.display='none';
+          document.getElementById('wd-form-auto').style.display='block';
+          document.getElementById('wd-form-toggle-manual').style.display='none';
+          document.getElementById('wd-form-toggle-auto').style.display='block';
+          return false;
         });
-        */
+        
+        $("#toggleform-auto").live("submit", function() {
+          document.getElementById('wd-form-auto').style.display='none';
+          document.getElementById('wd-form-manual').style.display='block';
+          document.getElementById('wd-form-toggle-auto').style.display='none';
+          document.getElementById('wd-form-toggle-manual').style.display='block';
+          return false;
+        });
+
 	// graph the new moisture readings
 	updater.start();
 });

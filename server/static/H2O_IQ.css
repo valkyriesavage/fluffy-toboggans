@@ -22,15 +22,19 @@ body {
   padding-bottom: 1em;
   line-height: 1.5em;
 }
-
 .wd-form {
   margin-bottom: 2em;
   margin-left: 10em;
 }
-
 .chart {
   margin-bottom: 2em;
   margin-left: 10em;
   width: 700px;
   height: 240px;
-} 
+}
+#wd-form-auto {
+  display: none;
+}
+#wd-form-toggle-auto {
+  display: none;
+}
