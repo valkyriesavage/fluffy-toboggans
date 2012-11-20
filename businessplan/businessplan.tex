@@ -29,11 +29,17 @@ Based on existing products targeting the same market share, we project that H2O 
 
 H2O IQ is a system designed to monitor and actuate drip irrigation in a garden setting. It comprises of in-garden solar powered interactive wireless sensor/actuator devices, an in-garden wireless central server and an online interface. Gardeners can use H2O IQ in one of two modes. In a manual mode, gardeners water their garden themselves and only use the online interface in order to monitor the current moisture level of the plants in order to decide when to water next and how much. In this mode, gardeners can issue a one-time watering command from the online interface in case they are too busy to water on a specific day. In an automatic mode, gardeners set thresholds for an automatic watering regime that will water their plants each time the moisture level gets below the threshold.
 
-Each interactive sensor device is designed to monitor a group of plants of the same species (for instance, one device could monitor a group of tomato plants). The pointy end of the device is intended to be placed in the ground next to one of the plants to be monitored. It consists of a solar powered moisture sensor, a drip irrigation valve actuator and input buttons.
+Each interactive sensor device is designed to monitor a group of plants of the same species (for instance, one device could monitor a group of tomato plants). The pointy end of the device is intended to be placed in the ground next to one of the plants to be monitored. It consists of a solar-powered moisture sensor, drip irrigation valve actuator, and input buttons.
 
 The central in-garden server is a wireless server designed to control all sensor/actuator devices in one garden. This design reduces the cost of the wireless communication to each sensor, as a lower powered radio connection can be used within the garden. The server also acts as a web server that hosts the online interface.
 
 \subsection{System Architechture}
+
+The H2O IQ system is built from two principle hardware components: a stake for the garden and a server.
+
+The embedded code for the garden stake wakes up once every hour to take a moisture reading and transmit it to the central server via XBee.  The XBee then receives a response containing moisture preference changes that users have input via the web interface.  Putting the device to sleep between these transfers is necessary for power conservation: the LiPo battery that powers the stake can only hold enough charge to make communication viable approximately 15 times without recharging.
+
+The central server has two long-running processes.  One is a continually-running communication loop for receiving communication from the garden stake array: this process takes moisture readings and writes them to a file, then sends a message to the other long-running process that fresh data is available for a particular plant.  The second long-running process is a web server, available for WebSocket-based connections with clients.  Clients can send instructions regarding different moisture goals, and the server sends fresh moisture readings as they become available.
 
 \section{Intended Market}
 
@@ -41,6 +47,13 @@ Our target users are young professionals or graduate students, who maintain vege
 
 \subsection{Potential Use Case Scenario}
 % Situation, Tasks, Users
+Consider Gina Herbruffen, age 32.  She has a home garden with tomatoes and chrysanthemums, among other plants.  Gina has a full-time job and occasionally has to travel for it, but she loves having fresh produce and flowers when she is home.  She knows that tomatoes are supposed to follow a watering schedule, that they should be wet for several days and then gradually dry out, but because she travels she cannot always keep track of the timing.  Additionally, her chrysanthemums have different watering needs, and she finds it difficult to remember when to water them, when to water the tomatoes, and when to water both.
+
+H2O IQ helps Gina to keep her lifestyle and her fresh produce.  H2O IQ is bookmarked on her phone and laptop, and on a recent trip to Korea Gina was able to set automatic watering to on and enjoy her trip without worries (although she did check on the moisture readings every few days, just after she would get off the phone with her daughter).
+
+When Gina returned from Korea, she dropped off her bags adn immediately walked out to her garden.  She had looked at the graphs on the cab ride home from the airport and knew that the moisture readings were spot-on, but now that she was standing in front of the chrysanthemums they looked a little dry.  She grabbed a can of water and poured it over the flowers, then simply knelt down and pushed the higher threshold and more water buttons to ensure that if she couldn't come out to water later the setting wouldn't be forgotten.
+
+Two weeks later it was Gina's birthday, and her girlfriends surprised her with a trip to Vegas for the weekend.  She got a notification from H2O IQ that the tomatoes needed watering, but she was nowhere near her garden and did not want to turn on automatic watering, so she clicked "just this once", and H2O IQ turned on the drip irrigation system for her until the plants were sated.
 
 \subsubsection{Key Task 1 - Watering on a regular basis}
 Plants need water, and the main job of a gardener once the plot has been planted and weeded is to water the garden. Some gardeners do this every other day, some every week, but all have some regime that they follow and certain amounts of water that they give each plant on a regular basis. The main problem with watering is the time it takes to fulfill the task in an often busy lifestyle. Current solutions to this problem, like automatic sprinklers or drip irrigation take the responsibility for watering away from the gardener, who often enjoys tending to the garden when they do have time. Moreover, these solutions do not take into account the unique needs of each plant (see task 2).
@@ -70,6 +83,8 @@ In H2O IQ's automatic mode, the drip irrigation regime is specialized for each p
 \section{Most Likely Scenario for Profit Model Spreadsheets}
 
 \section{The H2O IQ Corporation}
+
+The H2O IQ corporation is not intended to grow beyond its three founding members, who will serve as CEO, CTO, and CGO.
 
 \subsection{Corporate Structure}
 % Organizational chart goes here
