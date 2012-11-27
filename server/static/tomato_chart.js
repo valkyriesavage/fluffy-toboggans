@@ -64,8 +64,6 @@ var updater = {
 	},
 
 	updateIncoming: function(incoming) {
-		// TODO what is the format of data coming in?
-		// TODO update the incoming data variable
 		incoming_data = incoming;
                 drawChart();
 	}
