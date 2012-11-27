@@ -32,9 +32,10 @@ def mainloop(idleevent):
 
 def respond(plant_num):
   instructions_file = open(instructions_data_file(plant_num), 'w+')
+  final_line = chr(1)
   for line in instructions_file:
-    ser.write(line)
-  ser.write("\n")
+    final_line = line
+  ser.write(final_line)
   instructions_file.truncate(0)
   instructions_file.close()
 
