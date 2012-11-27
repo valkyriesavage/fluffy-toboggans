@@ -34,6 +34,7 @@ def respond(plant_num):
   instructions_file = open(instructions_data_file(plant_num), 'w+')
   for line in instructions_file:
     ser.write(line)
+  ser.write("\n")
   instructions_file.truncate(0)
   instructions_file.close()
 

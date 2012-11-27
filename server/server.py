@@ -3,7 +3,7 @@
 # Based off example code found in the Tornado package, and code from
 # the tinaja labs xbee package.
 
-import datetime, logging, math, os, random, serial, sys, syslog, time, uuid
+import datetime, json, logging, os, serial, sys, syslog, time, uuid
 
 import tornado.escape
 import tornado.ioloop
@@ -21,6 +21,22 @@ def log_data_file(plant_num):
 
 def instructions_data_file(plant_num):
   return "instructions-data/" + plant_num + ".log"
+
+def translate_instruction(instruction):
+  translate = json.loads(instruction)
+  if 'manual_percent_moisture' in translate:
+    translate = "M" + chr(int(translate['manual_percent_moisture'] + "0")) +\
+                      chr(0x54)
+  else:
+    translate = "A" +\
+                chr(int(translate['auto_percent_moisture_reaches'] + "0")) +\
+                chr(int(translate['auto_percent_moisture_until'] + "0"))
+  return translate + '\n'
+
+def touch(fname, times=None):
+  # from stackoverflow question 1158076
+  with file(fname, 'a'):
+    os.utime(fname, times)
 
 class Application(tornado.web.Application):
   def __init__(self):
@@ -97,8 +113,9 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
   def on_message(self, instruction):
     logging.info("got message %r", instruction)
+    touch(instructions_data_file(self.plant_num))
     instructions_file = open(instructions_data_file(self.plant_num), 'a')
-    instructions_file.write(instruction)
+    instructions_file.write(translate_instruction(instruction))
     instructions_file.close()
 
 def main():
