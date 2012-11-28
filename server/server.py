@@ -43,8 +43,8 @@ class Application(tornado.web.Application):
     handlers = [
         (r"/plant/(.*)", WaterDataSocketHandler),
         (r"/sensorupdated/(.*)/(.*)", SensorUpdatedHandler),
+        (r"/tomatoes", TomatoesHandler),
         (r"/", SplashHandler),
-        (r"/*", MainHandler),
         ]
     settings = dict(
         cookie_secret="it'sarandomcookiesecrethopefullynooneguessesit!",
@@ -60,7 +60,7 @@ class SplashHandler(tornado.web.RequestHandler):
   def get(self):
     self.render("splash.html", messages=[])
 
-class MainHandler(tornado.web.RequestHandler):
+class TomatoesHandler(tornado.web.RequestHandler):
   def get(self):
     self.render("tomatoes.html", messages=[])
 
