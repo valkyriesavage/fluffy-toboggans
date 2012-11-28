@@ -43,6 +43,7 @@ class Application(tornado.web.Application):
     handlers = [
         (r"/plant/(.*)", WaterDataSocketHandler),
         (r"/sensorupdated/(.*)/(.*)", SensorUpdatedHandler),
+        (r"/", SplashHandler),
         (r"/*", MainHandler),
         ]
     settings = dict(
@@ -55,9 +56,13 @@ class Application(tornado.web.Application):
     tornado.web.Application.__init__(self, handlers, **settings)
 
 
+class SplashHandler(tornado.web.RequestHandler):
+  def get(self):
+    self.render("splash.html", messages=[])
+
 class MainHandler(tornado.web.RequestHandler):
   def get(self):
-    self.render("index.html", messages=[])
+    self.render("tomatoes.html", messages=[])
 
 class SensorUpdatedHandler(tornado.web.RequestHandler):
   def get(self, plant_num, value):
