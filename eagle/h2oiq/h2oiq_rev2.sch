@@ -8805,6 +8805,11 @@ Source: http://datasheets.maximintegrated.com/en/ds/MAX17040-MAX17041.pdf</descr
 <wire x1="22.86" y1="27.94" x2="33.02" y2="27.94" width="0.1524" layer="91"/>
 <label x="33.02" y="27.94" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="ATMEL" gate="1" pin="PD2(INT0/PCINT18)"/>
+<wire x1="25.4" y1="83.82" x2="30.48" y2="83.82" width="0.1524" layer="91"/>
+<label x="33.02" y="83.82" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="MOISTUREVCC" class="0">
 <segment>
