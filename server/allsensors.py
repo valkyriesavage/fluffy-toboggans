@@ -35,7 +35,7 @@ def mainloop():
   alert_server(plant_num, sensor_data)
 
 def respond(plant_num):
-  instructions_file = open(instructions_data_file(plant_num), 'w+')
+  instructions_file = open(instructions_data_file(plant_num), 'r+')
   final_line = chr(1)
   for line in instructions_file:
     final_line = line

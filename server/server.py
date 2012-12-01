@@ -29,8 +29,8 @@ def translate_instruction(instruction):
                       chr(0x54)
   else:
     translate = "A" +\
-                chr(int(translate['auto_percent_moisture_reaches'] + "0")) +\
-                chr(int(translate['auto_percent_moisture_until'] + "0"))
+                chr(int(translate['auto_percent_moisture_low'] + "0")) +\
+                chr(int(translate['auto_percent_moisture_high'] + "0"))
   return translate + '\n'
 
 def touch(fname, times=None):
@@ -91,22 +91,21 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     data = 'hi shiry'
     try:
       data_file = open(log_data_file(plant_num), 'r')
+      data = []
+      for line in data_file:
+        try:
+          timestamp, reading = line.strip().split()
+        except ValueError, e:
+          continue
+        data.append({timestamp: reading})
+
     except IOError:
       pass
-
-    data = []
-    for line in data_file:
-      try:
-        timestamp, reading = line.strip().split()
-      except ValueError, e:
-        continue
-
-      data.append({timestamp: reading})
 
     logging.info("sent data")
 
     try:
-      cls.clients[plant_num].write_message(tornado.escape.json_encode(data));
+      cls.clients[plant_num].write_message(tornado.escape.json_encode(data))
     except:
       logging.error("Error sending message", exc_info=True)
 
@@ -114,10 +113,9 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
   def send_latest_data(cls, plant_num, sensor_reading):
     if not plant_num in cls.clients:
       return
-
-    client = cls.clients[plant_num]
     try:
-      client.write_message(sensor_reading);
+      data = [{str(time.time()): str(sensor_reading)}]
+      cls.clients[plant_num].write_message(tornado.escape.json_encode(data))
     except:
       logging.error("Error sending message", exc_info=True)
 

@@ -59,15 +59,15 @@
       <fieldset>
         <legend>Set up a recurring watering plan</legend>
         <p class="intro">
-          Water until the moisture level
+          Water when the moisture level
         </p>
         <dl>
           <dt>
-            <label for="auto_percent_moisture_high">reaches above</label>
+            <label for="auto_percent_moisture_high">reaches below</label>
           </dt>
           <dd>
             <select name="auto_percent_moisture_high" id="auto_percent_moisture_high">
-              <option value="-1">percent</option>
+              <option value="0">percent</option>
               <option value="1">10%</option>
               <option value="2">20%</option>
               <option value="3">30%</option>
@@ -81,11 +81,11 @@
             </select>
           </dd>
           <dt>
-            <label for="auto_percent_moisture_low">every time it gets below</label>
+            <label for="auto_percent_moisture_low">until it gets above</label>
           </dt>
           <dd>
             <select name="auto_percent_moisture_low" id="auto_percent_moisture_low">
-              <option value="-1">percent</option>
+              <option value="0">percent</option>
               <option value="1">10%</option>
               <option value="2">20%</option>
               <option value="3">30%</option>
@@ -126,8 +126,6 @@
     </form>
   </div>
   </div>
-  <script type="text/javascript" src="../static/manual_form.js"></script>
-  
   </body>
 </html>
 
