@@ -35,11 +35,11 @@ def mainloop():
   alert_server(plant_num, sensor_data)
 
 def respond(plant_num):
-  print "H2OIQ.response: responding to plant " + plant_num
   instructions_file = open(instructions_data_file(plant_num), 'w+')
   final_line = chr(1)
   for line in instructions_file:
     final_line = line
+  print "H2OIQ.response: responding to plant with " + final_line
   ser.write(final_line)
   instructions_file.truncate(0)
   instructions_file.close()

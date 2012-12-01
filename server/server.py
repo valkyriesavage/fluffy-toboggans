@@ -91,14 +91,19 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     data = 'hi shiry'
     try:
       data_file = open(log_data_file(plant_num), 'r')
-      data = []
-      for line in data_file:
-        timestamp, reading = line.strip().split()
-        data.append({timestamp: reading})
     except IOError:
       pass
 
-    logging.info(data)
+    data = []
+    for line in data_file:
+      try:
+        timestamp, reading = line.strip().split()
+      except ValueError, e:
+        continue
+
+      data.append({timestamp: reading})
+
+    logging.info("sent data")
 
     try:
       cls.clients[plant_num].write_message(tornado.escape.json_encode(data));
@@ -119,7 +124,7 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
   def on_message(self, instruction):
     logging.info("got message %r", instruction)
     touch(instructions_data_file(self.plant_num))
-    instructions_file = open(instructions_data_file(self.plant_num), 'a')
+    instructions_file = open(instructions_data_file(self.plant_num), 'w')
     instructions_file.write(translate_instruction(instruction))
     instructions_file.close()
 
