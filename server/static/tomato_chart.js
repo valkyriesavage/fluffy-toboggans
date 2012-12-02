@@ -1,5 +1,6 @@
 var incoming_data = [];
-var ideal_tomato = [0.2, 0.2, 1, 0.95, 0.9, 0.75, 0.6, 0.4, 0.2];
+var ideal_tomato = [20, 20, 100, 95, 90, 75, 60, 40, 20];
+var ideal_index = 0;
 
 $(document).ready(function() {
   // post the new instructions to the watering system
@@ -66,6 +67,10 @@ var updater = {
   updateIncoming: function(incoming) {
     // append our data to existing data
     incoming_data.push.apply(incoming_data, incoming);
+    for (var i = 0; i < incoming.length; ++i) {
+      ideal_tomato.push(ideal_tomato[ideal_index % ideal_tomato.length]);
+      ideal_index++;
+    }
     drawChart();
   }
 };
