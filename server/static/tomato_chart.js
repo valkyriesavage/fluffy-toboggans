@@ -1,11 +1,15 @@
 var incoming_data = [];
 var ideal_tomato = [20, 20, 100, 95, 90, 75, 60, 40, 20];
+var ideal_tomato_graph = [];
 var ideal_index = 0;
+var ticker = [];
 
 $(document).ready(function() {
   // post the new instructions to the watering system
   $(".waterform").live("submit", function() {
     newInstruction($(this));
+    ticker[ticker.length - 1] = 1; // signal a watering event
+    drawChart();
     return false;
   });
 
@@ -68,7 +72,8 @@ var updater = {
     // append our data to existing data
     incoming_data.push.apply(incoming_data, incoming);
     for (var i = 0; i < incoming.length; ++i) {
-      ideal_tomato.push(ideal_tomato[ideal_index % ideal_tomato.length]);
+      ticker.push(0);
+      ideal_tomato_graph.push(ideal_tomato[ideal_index % ideal_tomato.length]);
       ideal_index++;
     }
     drawChart();
@@ -85,6 +90,7 @@ function drawChart() {
   // add columns
   data.addColumn('datetime', 'date');
   data.addColumn('number', 'ideal %moisture');
+  data.addColumn('string', 'title1');
   data.addColumn('number', 'recorded %moisture');
   // add empty rows
   data.addRows(incoming_data.length);
@@ -94,8 +100,13 @@ function drawChart() {
     for (var date in incoming_data[row]) {
       // multiply by 1000 so that the date is in milliseconds, not seconds
       data.setCell(row, 0, new Date(parseInt(date) * 1000));
-      data.setCell(row, 1, ideal_tomato[row]);
-      data.setCell(row, 2, parseFloat(incoming_data[row][date]));
+      data.setCell(row, 1, ideal_tomato_graph[row]);
+      if (1 == ticker[row]) {
+        data.setCell(row, 2, 'watered');
+      } else {
+        data.setCell(row, 2, undefined);
+      }
+      data.setCell(row, 3, parseFloat(incoming_data[row][date]));
     }
   }
 
@@ -106,7 +117,8 @@ function drawChart() {
     title: 'Tomatoes',
     hAxis: {
       format: 'EEE, MMM d, H:mm'
-    }
+    },
+    displayAnnotations: true
   };
 
   var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('tomato_chart_div'));
