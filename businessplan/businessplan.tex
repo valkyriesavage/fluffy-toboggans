@@ -31,7 +31,15 @@ The H2O IQ system in year one will cost $35 for the server/monitoring component 
 
 H2O IQ is a system designed to monitor and actuate drip irrigation in a garden setting. It comprises of in-garden solar powered interactive wireless sensor/actuator devices, an in-garden wireless central server and an online interface. Gardeners can use H2O IQ in one of two modes. In a manual mode, gardeners water their garden themselves and only use the online interface in order to monitor the current moisture level of the plants in order to decide when to water next and how much. In this mode, gardeners can issue a one-time watering command from the online interface in case they are too busy to water on a specific day. In an automatic mode, gardeners set thresholds for an automatic watering regime that will water their plants each time the moisture level gets below the threshold.
 
-Each interactive sensor device is designed to monitor a group of plants of the same species (for instance, one device could monitor a group of tomato plants). The pointy end of the device is intended to be placed in the ground next to one of the plants to be monitored. It consists of a solar-powered moisture sensor, drip irrigation valve actuator, and input buttons.
+Each interactive sensor device is designed to monitor a group of plants of the same species (for instance, one device could monitor a group of tomato plants). The pointy end of the device is intended to be placed in the ground next to one of the plants to be monitored. It consists of a solar-powered moisture sensor, drip irrigation valve actuator, and input buttons. Figure~\ref{plant_vertical} displays the interactive device placed in a potted plant for illustration.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.15]{./pngs/plant_vertical.jpg}
+\end{center}
+\caption{The interactive sensor device placed in a potted plant.}
+\label{fig:plant_vertical}
+\end{figure}
 
 The central in-garden server is a wireless server designed to control all sensor/actuator devices in one garden. This design reduces the cost of the wireless communication to each sensor, as a lower powered radio connection can be used within the garden. The server also acts as a web server that hosts the online interface.
 
@@ -39,7 +47,15 @@ The central in-garden server is a wireless server designed to control all sensor
 
 \includegraphics[width=6.5in]{architecture.png}
 
-The H2O IQ system is built from two principle hardware components: a stake for the garden and a server.
+The H2O IQ system is built from two principle hardware components: a stake for the garden and a server that is hosted by a Raspberry Pi. Figure~\ref{device} displays the two components side by side.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.15]{./pngs/device.jpg}
+\end{center}
+\caption{The main components of the system: a stake for the garden and a Raspberry Pi that hosts the server.}
+\label{fig:device}
+\end{figure}
 
 The embedded code for the garden stake wakes up once every hour to take a moisture reading and transmit it to the central server via XBee.  The XBee then receives a response containing moisture preference changes that users have input via the web interface.  Putting the device to sleep between these transfers is necessary for power conservation: the LiPo battery that powers the stake can only hold enough charge to make communication viable approximately 15 times without recharging.
 
