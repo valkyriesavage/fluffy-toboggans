@@ -1,15 +1,21 @@
+var NUM_POINTS = 30;
+
 var incoming_data = [];
-var ideal_tomato = [20, 20, 100, 95, 90, 75, 60, 40, 20];
-var ideal_tomato_graph = [];
-var ideal_index = 0;
+var display_data = [];
+var ideal_tomato = [10, 15, 20, 26, 38, 49, 59, 70, 89, 95, 100, 99, 87, 76, 65, 58, 50, 45, 38, 30, 25, 20, 14, 10, 10, 10, 10, 10, 10, 10];
+var water_flag = false;
 var ticker = [];
 
 $(document).ready(function() {
+  // initialize tickers
+  for (var i = 0; i < NUM_POINTS; ++i) {
+    ticker.push(0);
+  }
+
   // post the new instructions to the watering system
   $(".waterform").live("submit", function() {
     newInstruction($(this));
-    ticker[ticker.length - 1] = 1; // signal a watering event
-    drawChart();
+    water_flag = true;
     return false;
   });
 
@@ -71,10 +77,16 @@ var updater = {
   updateIncoming: function(incoming) {
     // append our data to existing data
     incoming_data.push.apply(incoming_data, incoming);
-    for (var i = 0; i < incoming.length; ++i) {
-      ticker.push(0);
-      ideal_tomato_graph.push(ideal_tomato[ideal_index % ideal_tomato.length]);
-      ideal_index++;
+    display_data = incoming_data.slice(incoming_data.length-NUM_POINTS-1, incoming_data.length);
+    if (water_flag == true) {
+      ticker[ticker.length - incoming.length] = 1;
+      water_flag = false;
+    } else {
+      // move the ticker position in time with the data
+      for (var i = 0; i < incoming.length; ++i) {
+        ticker.shift();
+        ticker.push(0);
+      }
     }
     drawChart();
   }
@@ -90,23 +102,23 @@ function drawChart() {
   // add columns
   data.addColumn('datetime', 'date');
   data.addColumn('number', 'ideal %moisture');
-  data.addColumn('string', 'title1');
   data.addColumn('number', 'recorded %moisture');
+  data.addColumn('string', 'title1');
   // add empty rows
-  data.addRows(incoming_data.length);
+  data.addRows(display_data.length);
   // populate the rows
   // go over the incoming data variable
-  for (var row = 0; row < incoming_data.length; ++row) {
-    for (var date in incoming_data[row]) {
+  for (var row = 0; row < display_data.length; ++row) {
+    for (var date in display_data[row]) {
       // multiply by 1000 so that the date is in milliseconds, not seconds
       data.setCell(row, 0, new Date(parseInt(date) * 1000));
-      data.setCell(row, 1, ideal_tomato_graph[row]);
+      data.setCell(row, 1, ideal_tomato[row]);
+      data.setCell(row, 2, parseFloat(display_data[row][date]));
       if (1 == ticker[row]) {
-        data.setCell(row, 2, 'watered');
+        data.setCell(row, 3, 'watered');
       } else {
-        data.setCell(row, 2, undefined);
+        data.setCell(row, 3, undefined);
       }
-      data.setCell(row, 3, parseFloat(incoming_data[row][date]));
     }
   }
 
