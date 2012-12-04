@@ -5,6 +5,7 @@
 \usepackage{color}
 \usepackage[pdftex]{graphicx}
 
+\usepackage{rotating}
 \usepackage{fullpage}
 %\usepackage[top=1.5in,bottom=1.5in,left=2in,right=2in]{geometry}
 
@@ -133,6 +134,54 @@ Hydrospikes are ``worry-free automatic watering kits''.  They are simple plastic
 %\caption{YYY}
 %\label{fig:XXX}
 %\end{figure}
+
+%\begin{table}
+\begin{sidewaystable}
+\begin{tabular}{l||r|r|r|r|r}
+&2012&2013&2014&2015&2016\\
+ \hline 
+Sales Price &0&\$99.99 &\$99.99 &\$99.99 &\$99.99 \\
+\# Units Sold &0&1000&16000&38000&36000\\
+\hline
+Net Sales &0&\$99,990.00 &\$1,599,840.00 &\$3,799,620.00 &\$3,599,640.00 \\
+\hline 
+Cumulative Net Sales &0&\$99,990.00 &\$1,699,830.00 &\$5,499,450.00 &\$9,099,090.00 \\
+\hline
+Material Costs by Unit (2 stakes + server)&  &  &  &  &\\
+~~ Moisture Sensor &  &0.02&0.02&0.02&0.02\\
+~~ Servo &  &1&0.95&0.9&0.9\\
+~~ PCB &  &0.5&0.3&0.2&0.2\\
+~~ Wireless Radio &  &1.5&1.2&1&0.9\\
+~~ Micro-controller &  &0.3&0.25&0.23&0.2\\
+~~ Solar Cell &  &1&0.96&0.93&0.92\\
+~~ PCB components &  &0.05&0.04&0.03&0.03\\
+~~ Plastic Enclosure &&0.1&0.1&0.1&0.1\\
+~~ Server &  &20 &17&16&16\\
+~~~~ Total Unit Material Costs &0&\$28.94 &\$24.64 &\$22.82 &\$22.54 \\
+Labor By Unit &  &6&6&6&6\\
+~~~~ Total Unit Costs &0& 34.94&30.64&28.82&28.54\\
+~~~~ Total Stake Cost&0&4.47&3.82&3.41&3.27\\
+\hline 
+Cost of Products Sold &0&\$34,940&\$490,240&\$1,095,160&\$1,027,440\\
+Gross Margin &0&\$65,050 &\$1,109,600 &\$2,704,460 &\$2,572,200 \\
+\% Gross Margin &0&65.10\%& 69.36\% & 71.18\% &71.46\%\\
+\hline
+Development Costs&\$13,462&\$150,000& \$100,000&\$100,000&\$100,000\\
+Tooling Costs &0&\$158,872&0&0&0\\
+Overhead Costs &0&\$30,000&\$40,000&\$40,000&\$40,000\\
+Marketing (@ 13\% Net Sales) &0&\$12,998.70 &\$207,979.20 &\$493,950.60 &\$467,953.20 \\
+Other (@ 8\%) &0&\$7,999.20 &\$127,987.20 &\$303,969.60 &\$287,971.20 \\
+\hline 
+Total Operating Expenses &\$13,461.54 &\$394,809.90 &\$966,206.40 &\$2,033,080.20 &\$1,923,364.40 \\
+\hline 
+Pre-Tax Profit &(\$13,461.54)&(\$294,819.90)&\$633,633.60 &\$1,766,539.80 &\$1,676,275.60 \\
+\% Profit &N/A&-294.85\%&39.61\%&46.49\%&46.57\%\\
+\hline 
+Cumulative Profit &(\$13,461.54)&(\$308,281.44)&\$325,352.16 &\$2,091,891.96 &\$3,768,167.56 \\
+\end{tabular}
+\caption{Most Likely Profit Scenario}
+\end{sidewaystable}
+
 
 \bibliographystyle{plain}
 \bibliography{businessplan}
