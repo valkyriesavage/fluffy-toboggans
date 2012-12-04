@@ -56,7 +56,7 @@ Figure~\ref{fig:architecture} displays the system architecture.
 \label{fig:architecture}
 \end{figure}
 
-The H2O IQ system is built from two principle hardware components: a stake for the garden and a server that is hosted by a Raspberry Pi. Figure~\ref{fig:device} displays the two components side by side.
+The H2O IQ system is built from two principal hardware components: a stake for the garden and a server that is hosted by a Raspberry Pi. Figure~\ref{fig:device} displays the two components side by side.
 
 \begin{figure}[h]
 \begin{center}
@@ -78,11 +78,11 @@ Our target users are young professionals or graduate students, who maintain vege
 % Situation, Tasks, Users
 Consider Gina Herbruffen, age 32.  She has a home garden with tomatoes and chrysanthemums, among other plants.  Gina has a full-time job and occasionally has to travel for it, but she loves having fresh produce and flowers when she is home.  She knows that tomatoes are supposed to follow a watering schedule, that they should be wet for several days and then gradually dry out, but because she travels she cannot always keep track of the timing.  Additionally, her chrysanthemums have different watering needs, and she finds it difficult to remember when to water them, when to water the tomatoes, and when to water both.
 
-H2O IQ helps Gina to keep her lifestyle and her fresh produce.  H2O IQ is bookmarked on her phone and laptop, and on a recent trip to Korea Gina was able to set automatic watering to on and enjoy her trip without worries (although she did check on the moisture readings every few days, just after she would get off the phone with her daughter).
+H2O IQ helps Gina to keep her lifestyle and her fresh produce.  H2O IQ is bookmarked on her phone and laptop, and on a recent trip to Korea, Gina was able to set automatic watering to on and enjoy her trip without worries (although she did check on the moisture readings every few days, just after she would get off the phone with her daughter).
 
-When Gina returned from Korea, she dropped off her bags adn immediately walked out to her garden.  She had looked at the graphs on the cab ride home from the airport and knew that the moisture readings were spot-on, but now that she was standing in front of the chrysanthemums they looked a little dry.  She grabbed a can of water and poured it over the flowers, then simply knelt down and pushed the higher threshold and more water buttons to ensure that if she couldn't come out to water later the setting wouldn't be forgotten.
+When Gina returned from Korea, she dropped off her bags and immediately walked out to her garden.  She had looked at the graphs on the cab ride home from the airport and knew that the moisture readings were spot-on, but now that she was standing in front of the chrysanthemums they looked a little dry.  She grabbed a can of water and poured it over the flowers, then simply knelt down and pushed the higher threshold and more water buttons to ensure that if she couldn't come out to water later the setting wouldn't be forgotten.
 
-Two weeks later it was Gina's birthday, and her girlfriends surprised her with a trip to Vegas for the weekend.  She got a notification from H2O IQ that the tomatoes needed watering, but she was nowhere near her garden and did not want to turn on automatic watering, so she clicked "just this once", and H2O IQ turned on the drip irrigation system for her until the plants were sated.
+Two weeks later it was Gina's birthday, and her girlfriends surprised her with a trip to Vegas for the weekend.  She got a notification from H2O IQ that the tomatoes needed watering, but she was nowhere near her garden and did not want to turn on automatic watering, so she clicked ``just this once", and H2O IQ turned on the drip irrigation system for her until the plants were sated.
 
 \subsubsection{Key Task 1 - Watering on a regular basis}
 Plants need water, and the main job of a gardener once the plot has been planted and weeded is to water the garden. Some gardeners do this every other day, some every week, but all have some regime that they follow and certain amounts of water that they give each plant on a regular basis. The main problem with watering is the time it takes to fulfill the task in an often busy lifestyle. Current solutions to this problem, like automatic sprinklers or drip irrigation take the responsibility for watering away from the gardener, who often enjoys tending to the garden when they do have time. Moreover, these solutions do not take into account the unique needs of each plant (see task 2).
@@ -91,39 +91,41 @@ H2O IQ has two modes. In the manual mode, the system monitors the moisture level
 
 \subsubsection{Key Task 2 - Figuring out how much water to give to each plant}
 
-Each species and plant has unique water needs that are highly dependent on the microclimate, the sun and the soil. Figuring out how much water to give each plant is hard, and is often done by observation of the plant status and by using tools like moisture meters. A common problem with moisture sensors and meters is that their readings change when the prongs move and when the ground is fertilized. As the meter or sensor only measures the moisture in the ground, it does not have a good reading of the extent to which plant roots can absorb the water from the ground.
+Each species and plant has unique water needs that are highly dependent on the microclimate, the sun, and the soil. Figuring out how much water to give each plant is hard, and is often done by observation of the plant status and by using tools like moisture meters. A common problem with moisture sensors and meters is that their readings change when the prongs move and when the ground is fertilized. As the meter or sensor only measures the moisture in the ground, it does not have a good reading of the extent to which plant roots can absorb the water from the ground.
 
-Moreover, companion planting raises the need to give close by plants different amounts of water. Current solutions for close by plants include watering cones and drip irrigation that are delivered. However, both these solutions need to be configured by hand in a long trial and error process for each plant.
+Moreover, companion planting raises the need to give close by plants different amounts of water. Current solutions for companion planting include watering cones and drip irrigation that deliver water directly to the roots. However, both these solutions need to be configured by hand in a long trial and error process for each plant.
 
-In H2O IQ's automatic mode, the drip irrigation regime is specialized for each plant group based on the reading of its sensors. In order to make more reliable sensors, we use pairs of galvanized nails packaged in plaster. The packaging keeps the distance between the nails constant, and the plaster absorbs water from the ground in a similar way to plant roots and is not affected by fertilization. Thus our sensor is measuring the moisture in the plant rather than the moisture in the ground.
+In H2O IQ's automatic mode, the drip irrigation scheme is specialized for each plant group based on the reading of its sensors. In order to make more reliable sensors, we use pairs of galvanized nails packaged in plaster. The packaging keeps the distance between the nails constant. The plaster absorbs water from the ground in a similar way to plant roots and is not affected by fertilization. Thus our sensor is measuring the moisture in the plant rather than the moisture in the ground.
 
 \section{Manufacturing Costs}
 
 Manufacturing costs are calculated using the following formula:
 
-$Product Cost = (D + T)/N + (M + L + P) + O$
+$\textrm{Product Cost} = (D + T)/N + (M + L + P) + O$
 
 \begin{itemize}
 \item D = Design and development costs
 \item T = Tooling costs
 \item N = Number of devices sold over the life of the product
-\item M = Material Costs per product
-\item L = Labor costs per product for operating machines, assembly and packaging
+\item M = Material costs per product
+\item L = Labor costs per product for operating machines, assembly, and packaging
 \item P = Production costs per product
-\item O = Overhead costs (rental space,computers, telephone, electricity)
+\item O = Overhead costs (rental space, computers, telephone, electricity)
 \end{itemize} 
 
 \subsection{Most Likely Case Product Cost}
 
-In the most likely case, over 5 years:
+In the most likely case, the product cost averaged over 5 years, would be:
 
-$$Most Likely Case Product Cost Averaged Over 5 Years = (\$463,462 + \$158,872)/235,000 + (\$23.10 + \$6 + \$0) + \$0.64 = \$32.39$$
+$$
+(\$463,462 + \$158,872)/91,000 + (\$23.10 + \$6 + \$0) + \$0.64 = \$36.58
+$$
 
 \subsection{Design and Development Costs}
 
 For research and development, the prototype device that we built cost approximately \$13,462 in time and materials for three graduate students over 7 weeks.  We anticipate that 1.5 man-years will be required in the first year of production in order to pursue miniaturization and UI iterations.  In following years, in order to keep our product fresh on the market we plan to allot one person full time for R \& D. This brings our total development costs over the next 5 years to:
 
-$$Total Development Costs = \$13,462 + \$150,000 + \$100,000 + \$100,000 + \$100,000 = \$463,462$$
+$$\textrm{Total Development Costs} = \$13,462 + \$150,000 + \$100,000 + \$100,000 + \$100,000 = \$463,462$$
 
 \subsection{Tooling Costs}
 
@@ -135,7 +137,7 @@ These costs vary over time and are shown as separate items on the attached 5-yea
 
 \subsection{Labor Cost}
 
-The H2O IQ system requires minimal assembly.  The circuitboard has very few components that require soldering, and the server comes completely assembled.  We therefore estimate that a single worker can produce approximately 4 of the devices per hour.  Given that we anticipate outsourcing our production to manufacturing houses where possible, the cost of labor per unit will be approximately \$6 and we can still pay the workers a living wage.
+The H2O IQ system requires minimal assembly.  The circuit board has very few components that require soldering, and the server comes completely assembled.  We therefore estimate that a single worker can produce approximately 4 of the devices per hour.  Given that we anticipate outsourcing our production to manufacturing houses where possible, the cost of labor per unit will be approximately \$6 and we can still pay the workers a living wage.
 
 \subsection{Production Costs}
 
@@ -143,23 +145,25 @@ All production is outsourced, therefore production costs are \$0.00.
 
 \subsection{Overhead}
 
-For overhead costs, we are allocating $$Rent (\$1250 * 12) + Part time Tech Support (\$15*20*52) = \$30,000$$ per year that will increase to \$40,000 after the first year to account for product support.  We are planning to rent a simple office in the Bay Area and hire a part-time technical support representative (likely not on-site) who will field calls about technical troubles with the H2O IQ system. Over the first five years:
+For overhead costs, we are allocating $$\textrm{Rent} (\$1250 * 12) + \textrm{Part time Tech Support} (\$15*20*52) = \$30,000$$ per year that will increase to \$40,000 after the first year to account for product support.  We are planning to rent a simple office in the Bay Area and hire a part-time technical support representative (likely not on-site) who will field calls about technical troubles with the H2O IQ system. Over the first five years:
 
-$$Overhead = \$0 + \$30,000 + \$40,000 + \$40,000 + \$40,000 = \$150,000$$
-$$Units Produced Over 5 Years: 0 + 1,000 + 160,000 + 38,000 + 36,000 = 235,000$$
-$$Unit Overhead Cost = \$150,000/235,000 = \$0.64$$
+\begin{eqnarray*}
+\textrm{Overhead} &=& \$0 + \$30,000 + \$40,000 + \$40,000 + \$40,000 = \$150,000 \\
+\textrm{Units Produced Over 5 Years} &=&0 + 1,000 + 16,000 + 38,000 + 36,000 = 91,000\\
+\textrm{Unit Overhead Cost} &=& \$150,000/91,000 = \$1.65
+\end{eqnarray*}
 
-\section{Operational Costs}
+\subsection{Operational Costs}
 
-Our estimate of operational costs include the following elements: 1) Marketing costs, and 2) Other promotional and running costs.
+Our estimate of operational costs includes the following elements: 1) Marketing costs, and 2) Other promotional and running costs.
 
-The Marketing costs were assumed to be 13\% of yearly net sales. This budget includes the the production, such as printing, of any marketing materials, along with web and media advertising. It also covers the salaries of any marketing employees.
+The Marketing costs were assumed to be 13\% of yearly net sales. This budget includes the production, such as printing, of any marketing materials, along with web and media advertising. It also covers the salaries of any marketing employees.
 
 Other promotional and running costs include patent and legal fees, HR services, accounting, etc. These were estimated as 8\% of yearly net sales.
 
 \section{Most Likely Scenario for Profit Model Spreadsheets}
 
-The most likely scenario for our profit model is included in table \ref{tab:profit}. This model was constructed using the following assumptions:
+The most likely scenario for our profit model is included in Table \ref{tab:profit}. This model was constructed using the following assumptions:
 \begin{enumerate}
 \item A small, but reasonable size of orders during Q4 of 2013, followed by increasing interest in the product throughout 2014 and 2015, decreasing slightly in 2016 and beyond.
 \item Component prices for 2013 were assumed at current batch prices, with additional year decreases a result of increased negotiating and purchasing power.
@@ -167,11 +171,11 @@ The most likely scenario for our profit model is included in table \ref{tab:prof
 \item We anticipate moderate market growth through our target sector, along with some spillover into related market segments, such as single plant watering systems and small adoption in applicable industry sectors (e.g. small-scale vineyards).
 \end{enumerate}
 
-This profit model does not include potential technology licensing revenues, nor does it factor in other revenue generating business models, such as offering the device at a reduced rate and charging for the use or analytics information, or any group-purchased service reselling. These models would provide additional revenue beyond that given here, with only a marginal increase in additional support costs.
+This profit model does not include potential technology licensing revenues, nor does it factor in other revenue generating business models, such as offering the device at a reduced rate and charging for the use of analytics information, or any group-purchased service reselling. These models would provide additional revenue beyond that given here, with only a marginal increase in additional support costs.
 
 \section{The H2O IQ Corporation}
 
-The H2O IQ corporation principals (i.e. the three founders) do not wish to build out an extravagant or bloated company.  We insist on keeping our costs minimal, utilizing others' products when possible, and outsourcing when necessary.  The structural goals of H2O IQ are to keep costs minimal and roles dynamic.  We will acquire raw materials from DigiKey and Xaio Chen Dai, LLC, and outsource the manufacture of the device body to cheap overseas suppliers.  Assembly and programming will also be done overseas to give the core team more time to devote to R\&D, market research, and vision planning.
+The H2O IQ corporation principals (i.e. the three founders) do not wish to build out an extravagant or bloated company.  We insist on keeping our costs minimal, utilizing others' products when possible, and outsourcing when necessary.  The structural goals of H2O IQ are to keep costs minimal and roles dynamic.  We will acquire raw materials from DigiKey and Xiao Chen Dai Enterprises Ltd. and outsource the manufacture of the device body to cheap overseas suppliers.  Assembly and programming will also be done overseas to give the core team more time to devote to R\&D, market research, and vision planning.
 
 H2O IQ intends to keep a flat organizational structure, consisting of the three founders and perhaps a fourth person, so that development of improvements to H2O IQ and also novel products can happen as rapidly as possible.  The R\&D member will work directly with the CEO to determine company direction.  The CEO will oversee the CMO, who is in charge of product marketing and sales; and the COO, who will work with overseas manufacturers and parts suppliers.
 
@@ -193,7 +197,9 @@ Current products on the market that have similar goals to H2O IQ include the Kou
 The Koubachi system is designed to ``give your plant a voice''.  It has an array of sensors which are available to be read on a website and compared to established plant care models.  It does not have actuation as the H2O IQ, so while it has additional sensors it cannot help you care for your plant when you are away.  The Koubachi system retails for EUR119.00, approximately USD150, which is significantly more than H2O IQ is projected to retail for.
 
 Hydrospikes are ``worry-free automatic watering kits''.  They are simple plastic spikes that can be filled with water and inserted into soil next to plants to water them gradually over several days.  This product, however, does not have sensors or internet connectivity, and thus it is in a very different price bracket, costing USD9 for three units.
+
 \section{Model Spreadsheets}
+See Table \ref{tab:profit}
 
 %\begin{figure}[h]
 %\begin{center}
