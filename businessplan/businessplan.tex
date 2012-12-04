@@ -22,23 +22,23 @@ H2O IQ allows gardeners to water their plants efficiently and consistently wheth
 
 \section{Price}
 
-Based on existing products targeting the same market share, we project that H2O IQ designed for 5 plant groups will cost \$99 at initial retailers. 
+Based on existing products targeting the same market share, we project that H2O IQ designed for 2 plant groups will cost \$99 at initial retailers. 
 
 \section{Cost}
 
-The H2O IQ system in year one will cost $35 for the server/monitoring component and $?? for each in-garden device.  By year five, we expect it to fall to $15 for the server and $?? for each in-garden device.
+The H2O IQ system in year one will cost \$20 for the server/monitoring component and \$4.47 for each in-garden device.  By year five, we expect it to fall to \$16 for the server and \$3.27 for each in-garden device.  We plan to package these devices in ``kits'' consisting of two stakes and a server and ``expansions'' of one stake each.
 
 \section{H2O IQ System Description}
 
 H2O IQ is a system designed to monitor and actuate drip irrigation in a garden setting. It comprises of in-garden solar powered interactive wireless sensor/actuator devices, an in-garden wireless central server and an online interface. Gardeners can use H2O IQ in one of two modes. In a manual mode, gardeners water their garden themselves and only use the online interface in order to monitor the current moisture level of the plants in order to decide when to water next and how much. In this mode, gardeners can issue a one-time watering command from the online interface in case they are too busy to water on a specific day. In an automatic mode, gardeners set thresholds for an automatic watering regime that will water their plants each time the moisture level gets below the threshold.
 
-Each interactive sensor device is designed to monitor a group of plants of the same species (for instance, one device could monitor a group of tomato plants). The pointy end of the device is intended to be placed in the ground next to one of the plants to be monitored. It consists of a solar-powered moisture sensor, drip irrigation valve actuator, and input buttons. Figure~\ref{plant_vertical} displays the interactive device placed in a potted plant for illustration.
+Each interactive sensor device is designed to monitor a group of plants of the same species (for instance, one device could monitor a group of tomato plants). The pointy end of the device is intended to be placed in the ground next to one of the plants to be monitored. It consists of a solar-powered moisture sensor, drip irrigation valve actuator, and input buttons. Figure~\ref{fig:plant_vertical} displays the interactive device placed in a potted plant for illustration.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[scale=0.15]{./pngs/plant_vertical.jpg}
 \end{center}
-\caption{The interactive sensor device placed in a potted plant.}
+\caption{The interactive sensor device can be placed in a potted plant.}
 \label{fig:plant_vertical}
 \end{figure}
 
@@ -46,19 +46,19 @@ The central in-garden server is a wireless server designed to control all sensor
 
 \subsection{System Architecture}
 
-Figure~\ref{architecture} displays the system architecture.
+Figure~\ref{fig:architecture} displays the system architecture.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[scale=0.7]{./pngs/architecture.png}
 \end{center}
-\caption{System architecture.}
+\caption{The architecture of the H2O IQ system : one monitor per plant type is in the garden, and these communicate with a central Raspberry Pi, which provides an interface for observing moisture levels and controlling watering for users.}
 \label{fig:architecture}
 \end{figure}
 
-The H2O IQ system is built from two principle hardware components: a stake for the garden and a server that is hosted by a Raspberry Pi. Figure~\ref{device} displays the two components side by side.
+The H2O IQ system is built from two principle hardware components: a stake for the garden and a server that is hosted by a Raspberry Pi. Figure~\ref{fig:device} displays the two components side by side.
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \begin{center}
 \includegraphics[scale=0.15]{./pngs/device.jpg}
 \end{center}
@@ -80,7 +80,7 @@ Consider Gina Herbruffen, age 32.  She has a home garden with tomatoes and chrys
 
 H2O IQ helps Gina to keep her lifestyle and her fresh produce.  H2O IQ is bookmarked on her phone and laptop, and on a recent trip to Korea Gina was able to set automatic watering to on and enjoy her trip without worries (although she did check on the moisture readings every few days, just after she would get off the phone with her daughter).
 
-When Gina returned from Korea, she dropped off her bags adn immediately walked out to her garden.  She had looked at the graphs on the cab ride home from the airport and knew that the moisture readings were spot-on, but now that she was standing in front of the chrysanthemums they looked a little dry.  She grabbed a can of water and poured it over the flowers, then simply knelt down and pushed the higher threshold and more water buttons to ensure that if she couldn't come out to water later the setting wouldn't be forgotten.
+When Gina returned from Korea, she dropped off her bags and immediately walked out to her garden.  She had looked at the graphs on the cab ride home from the airport and knew that the moisture readings were spot-on, but now that she was standing in front of the chrysanthemums they looked a little dry.  She grabbed a can of water and poured it over the flowers, then simply knelt down and pushed the higher threshold and more water buttons to ensure that if she couldn't come out to water later the setting wouldn't be forgotten.
 
 Two weeks later it was Gina's birthday, and her girlfriends surprised her with a trip to Vegas for the weekend.  She got a notification from H2O IQ that the tomatoes needed watering, but she was nowhere near her garden and did not want to turn on automatic watering, so she clicked "just this once", and H2O IQ turned on the drip irrigation system for her until the plants were sated.
 
@@ -101,11 +101,25 @@ In H2O IQ's automatic mode, the drip irrigation regime is specialized for each p
 
 \subsection{Most Likely Case Product Cost}
 \subsection{Design and Development Costs}
+
+For research and development, the prototype device that we built cost approximately \$17,000 in time and materials for three graduate students over 6 weeks.  We anticipate that 1.5 man-years will be required in the first year of production in order to pursue miniaturization and UI iterations.  In following years, in order to keep our product fresh on the market we plan to allot one person full time for R \& D.
+
 \subsection{Tooling Costs}
+
+For tooling, we are anticipating getting a class 104 mold made in year 2 which will last us through the five years estimated in the chart, and presumably through the majority of our lifecycle as a company (a class 104 mold is good for ~100,000 products).  This mold will cost \$158,872 according to CustomPartNet.com, given the current dimensions and complexity of our stake designs.  We are hoping to develop a smaller version of the stake device before production begins, however, so this cost may be reduced.
+
 \subsection{Materials Cost}
 \subsection{Labor Cost}
+
+The H2O IQ system requires minimal assembly.  The circuitboard has very few components that require soldering, and the server comes completely assembled.  We therefore estimate that a single worker can produce approximately 4 of the devices per hour.  Given that we anticipate outsourcing our production to manufacturing houses where possible, the cost of labor per unit will be approximately \$6 and we can still pay the workers a living wage.
+
 \subsection{Production Costs}
+
+All production is outsourced, therefore production costs are \$0.00.
+
 \subsection{Overhead}
+
+For overhead costs, we are allocating $$Rent (\$1250 * 12) + Parttime Tech Support (\$15*20*52) = \$30,000$$ per year.  We are planning to rent a simple office in the Bay Area and hire a part-time technical support representative (likely not on-site) who will field calls about technical troubles with the H2O IQ system.
 
 \section{Operational Costs}
 
@@ -113,10 +127,18 @@ In H2O IQ's automatic mode, the drip irrigation regime is specialized for each p
 
 \section{The H2O IQ Corporation}
 
-The H2O IQ corporation is not intended to grow beyond its three founding members, who will serve as CEO, CTO, and CGO.
+The H2O IQ corporation principals (i.e. the three founders) do not wish to build out an extravagant or bloated company.  We insist on keeping our costs minimal, utilizing others' products when possible, and outsourcing when necessary.  The structural goals of H2O IQ are to keep costs minimal and roles dynamic.  We will acquire raw materials from DigiKey and Xaio Chen Dai, LLC, and outsource the manufacture of the device body to cheap overseas suppliers.  Assembly and programming will also be done overseas to give the core team more time to devote to R\&D, market research, and vision planning.
+
+H2O IQ intends to keep a flat organizational structure, consisting of the three founders and perhaps a fourth person, so that development of improvements to H2O IQ and also novel products can happen as rapidly as possible.  The R\&D member will work directly with the CEO to determine company direction.  The CEO will oversee the CMO, who is in charge of product marketing and sales; and the COO, who will work with overseas manufacturers and parts suppliers.
 
 \subsection{Corporate Structure}
-% Organizational chart goes here
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=5.5in]{./pngs/organizational-model.png}
+\end{center}
+\caption{The H2O IQ corporation's corporate model values R\&D highly.}
+\label{fig:device}
+\end{figure}
 
 \section{Competitive Landscape}
 
