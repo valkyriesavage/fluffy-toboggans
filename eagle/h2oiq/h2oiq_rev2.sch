@@ -8393,9 +8393,9 @@ Source: http://datasheets.maximintegrated.com/en/ds/MAX17040-MAX17041.pdf</descr
 <attribute name="NAME" x="11.176" y="5.842" size="1.27" layer="95" rot="MR180"/>
 <attribute name="VALUE" x="8.636" y="0.508" size="1.27" layer="96" rot="MR180"/>
 </instance>
-<instance part="T1" gate="G$1" x="20.32" y="27.94" smashed="yes" rot="R180">
-<attribute name="NAME" x="21.59" y="35.56" size="1.778" layer="95" rot="R180"/>
-<attribute name="VALUE" x="37.084" y="35.56" size="1.778" layer="96" rot="R180"/>
+<instance part="T1" gate="G$1" x="20.32" y="30.48" smashed="yes" rot="MR0">
+<attribute name="NAME" x="21.59" y="22.86" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="37.084" y="22.86" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="LED1" gate="G$1" x="-20.32" y="25.4"/>
 <instance part="BUTTONLL" gate="S" x="93.98" y="38.1"/>
@@ -8599,10 +8599,6 @@ Source: http://datasheets.maximintegrated.com/en/ds/MAX17040-MAX17041.pdf</descr
 <junction x="-45.72" y="83.82"/>
 </segment>
 <segment>
-<pinref part="P+6" gate="VCC" pin="VCC"/>
-<pinref part="T1" gate="G$1" pin="E"/>
-</segment>
-<segment>
 <pinref part="XBEE" gate="G$1" pin="VCC"/>
 <pinref part="P+3" gate="VCC" pin="VCC"/>
 <wire x1="76.2" y1="99.06" x2="76.2" y2="101.6" width="0.1524" layer="91"/>
@@ -8624,6 +8620,11 @@ Source: http://datasheets.maximintegrated.com/en/ds/MAX17040-MAX17041.pdf</descr
 <wire x1="0" y1="-15.24" x2="10.16" y2="-15.24" width="0.1524" layer="91"/>
 <label x="10.16" y="-15.24" size="1.778" layer="95"/>
 <pinref part="JP4" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="T1" gate="G$1" pin="C"/>
+<pinref part="P+6" gate="VCC" pin="VCC"/>
+<wire x1="15.24" y1="33.02" x2="15.24" y2="35.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$2" class="0">
@@ -8766,11 +8767,11 @@ Source: http://datasheets.maximintegrated.com/en/ds/MAX17040-MAX17041.pdf</descr
 </net>
 <net name="SERVOACT" class="0">
 <segment>
-<pinref part="T1" gate="G$1" pin="C"/>
-<wire x1="15.24" y1="12.7" x2="15.24" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="JP2" gate="A" pin="3"/>
 <pinref part="D1" gate="G$1" pin="C"/>
 <wire x1="15.24" y1="2.54" x2="15.24" y2="12.7" width="0.1524" layer="91"/>
+<pinref part="T1" gate="G$1" pin="E"/>
+<wire x1="15.24" y1="22.86" x2="15.24" y2="12.7" width="0.1524" layer="91"/>
 <junction x="15.24" y="12.7"/>
 </segment>
 </net>
@@ -8802,8 +8803,8 @@ Source: http://datasheets.maximintegrated.com/en/ds/MAX17040-MAX17041.pdf</descr
 <net name="SERVOON" class="0">
 <segment>
 <pinref part="T1" gate="G$1" pin="B"/>
-<wire x1="22.86" y1="27.94" x2="33.02" y2="27.94" width="0.1524" layer="91"/>
-<label x="33.02" y="27.94" size="1.778" layer="95"/>
+<wire x1="22.86" y1="30.48" x2="33.02" y2="30.48" width="0.1524" layer="91"/>
+<label x="33.02" y="30.48" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="ATMEL" gate="1" pin="PD2(INT0/PCINT18)"/>
